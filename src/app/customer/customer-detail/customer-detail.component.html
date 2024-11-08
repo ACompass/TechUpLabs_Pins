@@ -1,1 +1,74 @@
-<p>customer-detail works!</p>
+<div class="container mt-4">
+    <h2>Customer Detail</h2>
+
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    
+        <!-- Name Field -->
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+                type="text" 
+                id="name" 
+                formControlName="name" 
+                class="form-control" 
+                placeholder="Enter customer name" 
+            />
+            <div *ngIf="customerForm.get('name')?.invalid && customerForm.get('name')?.touched" class="text-danger">
+                Name is required.
+            </div>
+        </div>
+
+        <!-- Email Field -->
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input 
+                type="email" 
+                id="email" 
+                formControlName="email" 
+                class="form-control" 
+                placeholder="Enter customer email" 
+            />
+            <div *ngIf="customerForm.get('email')?.invalid && customerForm.get('email')?.touched" class="text-danger">
+                A valid email is required.
+            </div>
+        </div>
+
+        <!-- Region Field -->
+        <div class="form-group">
+            <label for="region">Region</label>
+            <select 
+                id="region" 
+                formControlName="region" 
+                class="form-control"
+                (change)="onRegionSelect()">
+                <option value="" disabled>Select region</option>
+                <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
+            </select>
+            <div *ngIf="customerForm.get('region')?.invalid && customerForm.get('region')?.touched" class="text-danger">
+                Region is required.
+            </div>
+        </div>
+
+        <!-- Country Field -->
+        <div class="form-group">
+            <label for="country">Country</label>
+            <select 
+                id="country" 
+                formControlName="country" 
+                class="form-control" 
+                [disabled]="!customerForm.get('region')?.value">
+                <option value="" disabled>Select country</option>
+                <!-- Dynamic countries based on the selected region -->
+                <option *ngFor="let country of countries" [value]="country.country">{{ country.country }}</option>
+            </select>
+            <div *ngIf="customerForm.get('country')?.invalid && customerForm.get('country')?.touched" class="text-danger">
+                Country is required.
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" [disabled]="customerForm.invalid">
+            Submit
+        </button>
+    </form>
+</div>
