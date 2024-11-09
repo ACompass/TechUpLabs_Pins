@@ -59,7 +59,9 @@ export class CustomerDetailComponent implements OnInit {
   // Submit form data and store in localstorage
   onSubmit(): void {
     const existingData: any = localStorage.getItem('customerData');
-    this.customerData = JSON.parse(existingData);
+    if (existingData) {
+      this.customerData = JSON.parse(existingData);
+    }
     
     this.customerData.push(this.customerForm.value);
     localStorage.setItem('customerData', JSON.stringify(this.customerData));

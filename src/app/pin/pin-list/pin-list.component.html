@@ -1,1 +1,28 @@
-<p>pin-list works!</p>
+<div class="container mt-4">
+    <h2>List of Pins</h2>
+    <span class="action-buttons">
+        <button class="btn btn-primary" (click)="openModal('customers')">+ Add Customer</button>
+        <button class="btn btn-primary" (click)="openModal('pins')">+ Add Pin</button>
+    </span>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Collaborators</th>
+                <th>Privacy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pin of pins">
+                <td>{{ pin.title }}</td>
+                <td> {{ pin.image }}
+                    <!-- <img [src]="'assets/images/' + pin.image" alt="{{ pin.title }}" width="100" /> -->
+                </td>
+                <td>{{ pin.collaborators.join(', ') }}</td>
+                <td>{{ pin.privacy }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

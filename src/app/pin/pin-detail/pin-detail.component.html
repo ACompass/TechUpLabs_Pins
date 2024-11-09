@@ -1,1 +1,106 @@
-<p>pin-detail works!</p>
+<div class="container mt-4">
+    <h2>Pin Detail</h2>
+
+    <form [formGroup]="pinDetailForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input
+                type="text"
+                id="title"
+                formControlName="title"
+                class="form-control"
+                placeholder="Enter Pin Title"
+            />
+            <div *ngIf="pinDetailForm.get('title')?.invalid && pinDetailForm.get('title')?.touched" class="text-danger">
+                Title is required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image</label>
+            <div
+                class="image-upload"
+                (drop)="onImageDrop($event)"
+                (dragover)="$event.preventDefault()"
+                (dragleave)="$event.preventDefault()"
+            >
+                <input
+                    type="file"
+                    id="image"
+                    formControlName="image"
+                    (change)="onFileChange($event)"
+                    accept="image/*"
+                    class="form-control"
+                />
+                <div *ngIf="pinDetailForm.get('image')?.invalid && pinDetailForm.get('image')?.touched" class="text-danger">
+                    Image is required.
+                </div>
+                <p *ngIf="pinDetailForm.get('image')?.value">Image: {{ pinDetailForm.get('image')?.value?.name }}</p>
+            </div>
+        </div>
+
+
+        <!-- Collaborators (Multi-Select) -->
+        <!-- <div class="form-group">
+            <label for="collaborators">Collaborators</label>
+            <ngx-select-ex
+                [items]="collaborators"
+                formControlName="collaborators"
+                [(ngModel)]="pinDetailForm.value.collaborators"
+                bindLabel="name"
+                bindValue="id"
+                [multiple]="true"
+                placeholder="Select collaborators"
+            ></ngx-select-ex>
+
+            <div *ngIf="pinDetailForm.get('collaborators')?.invalid && pinDetailForm.get('collaborators')?.touched" class="text-danger">
+                Collaborators are required.
+            </div>
+        </div> -->
+
+
+        <div class="form-group">
+            <label for="collaborators">Collaborators</label>
+            <select
+                id="collaborators"
+                formControlName="collaborators"
+                class="form-control"
+                multiple
+            >
+                <option *ngFor="let collaborator of collaborators" [value]="collaborator">
+                    {{ collaborator }}
+                </option>
+            </select>
+            <div *ngIf="pinDetailForm.get('collaborators')?.invalid && pinDetailForm.get('collaborators')?.touched" class="text-danger">
+                Collaborators are required.
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="privacy">Privacy</label>
+            <div>
+                <label>
+                    <input
+                        type="radio"
+                        formControlName="privacy"
+                        value="public"
+                    /> Public
+                </label>
+                <label>
+                    <input
+                        class="btn-radio"
+                        type="radio"
+                        formControlName="privacy"
+                        value="private"
+                    /> Private
+                </label>
+            </div>
+            <div *ngIf="pinDetailForm.get('privacy')?.invalid && pinDetailForm.get('privacy')?.touched" class="text-danger">
+                Privacy is required.
+            </div>
+        </div>
+
+        <!-- <button type="submit" class="btn btn-primary" [disabled]="pinDetailForm.invalid">Submit</button> -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

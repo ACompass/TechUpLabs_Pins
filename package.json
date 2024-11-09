@@ -20,6 +20,7 @@
     "@angular/router": "^14.0.0",
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
+    "lodash.isequal": "^4.5.0",
     "ng2-file-upload": "^7.0.1",
     "ngx-select-ex": "^8.0.2",
     "rxjs": "~7.5.0",

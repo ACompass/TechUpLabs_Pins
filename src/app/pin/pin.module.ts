@@ -4,6 +4,9 @@ import { PinListComponent } from './pin-list/pin-list.component';
 import { PinDetailComponent } from './pin-detail/pin-detail.component';
 import { PinRoutingModule } from './pin-routing.module';
 import { PinService } from './services/pin.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FileUploadModule } from 'ng2-file-upload';
+import { NgxSelectModule } from 'ngx-select-ex';
 
 
 
@@ -14,7 +17,11 @@ import { PinService } from './services/pin.service';
   ],
   imports: [
     CommonModule,
-    PinRoutingModule
+    PinRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FileUploadModule,
+    NgxSelectModule
   ],
   providers: [PinService]
 })
