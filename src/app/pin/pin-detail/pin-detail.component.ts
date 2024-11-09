@@ -45,9 +45,11 @@ export class PinDetailComponent implements OnInit {
     const files = event?.dataTransfer?.files;
     
     if (files && files.length > 0) {
-      this.pinDetailForm.patchValue({
-        image: files[0]
-      });
+      // this.pinDetailForm.patchValue({
+      //   image: files[0]
+      // });
+
+      this.pinDetailForm.value.image = files[0].name;
     }
   }
 

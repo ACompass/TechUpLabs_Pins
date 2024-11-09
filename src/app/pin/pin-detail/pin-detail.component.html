@@ -1,7 +1,7 @@
 <div class="container mt-4">
     <h2>Pin Detail</h2>
 
-    <form [formGroup]="pinDetailForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="pinDetailForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <div class="form-group">
             <label for="title">Title</label>
             <input

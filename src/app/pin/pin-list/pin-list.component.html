@@ -20,9 +20,12 @@
                 <td> {{ pin.image }}
                     <!-- <img [src]="'assets/images/' + pin.image" alt="{{ pin.title }}" width="100" /> -->
                 </td>
-                <td>{{ pin.collaborators.join(', ') }}</td>
+                <td>{{ (pin.collaborators.length > 1) ? pin.collaborators.join(', ') : pin.collaborators[0] }}</td>
                 <td>{{ pin.privacy }}</td>
             </tr>
         </tbody>
     </table>
 </div>
+
+
+<!-- <app-modal *ngIf="showModal" #modal></app-modal> -->

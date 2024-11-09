@@ -7,13 +7,16 @@ import { PinService } from './services/pin.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FileUploadModule } from 'ng2-file-upload';
 import { NgxSelectModule } from 'ngx-select-ex';
+// import { CustomerDetailComponent } from '../customer/customer-detail/customer-detail.component';
+// import { ModalComponent } from '../shared/modal/modal.component';
 
 
 
 @NgModule({
   declarations: [
     PinListComponent,
-    PinDetailComponent
+    PinDetailComponent,
+    // ModalComponent
   ],
   imports: [
     CommonModule,
@@ -23,6 +26,10 @@ import { NgxSelectModule } from 'ngx-select-ex';
     FileUploadModule,
     NgxSelectModule
   ],
+  // entryComponents: [
+  //   CustomerDetailComponent,
+  //   PinDetailComponent
+  // ],
   providers: [PinService]
 })
 
